@@ -24,20 +24,15 @@
     <img id="image-container" src="" alt="Image Viewer">
 
     <script>
-        // Array of image URLs (replace these with your image paths)
         const images = [
             'BedroomB (1).jpg', 'BEDROOM2MISSINGAFTER (1).jpg', 'DiningAfter (1).jpg', 
             '3D ViewA (1).jpg', '3D View 2 After.jpg', 'ViewA After.jpg', 
             'LIVINGROOM2AFTER (1).jpg', 'KitchenAfter (1).jpg', 'LivingA (1).jpg'
         ];
-
-        // URL for the static GIF
         const staticGif = 'https://upload.wikimedia.org/wikipedia/commons/0/02/Television_static.gif';
 
-        // Reference to the HTML image element
         const imageContainer = document.getElementById('image-container');
 
-        // Function to show an image
         function showImage(imageUrl) {
             imageContainer.src = imageUrl;
         }
