@@ -60,13 +60,24 @@
          rotateImages();
 
         // Add event listener for space bar to show the next image
-        document.addEventListener('keydown', (event) => {
-            if (event.code === 'Space') {
+        document.addEventListener('keydown', async (event) => {
+            if (event.code === 'Space' && canPressSpace) {
                 event.preventDefault(); // Prevent scrolling when space is pressed
-                // Show the next image immediately
+
+                canPressSpace = false; // Disable further presses temporarily
+
+                // Show static GIF
+                showImage(staticGif);
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Show static for 1 second
+
+                // Show the next image
                 const nextImage = images.shift();
                 showImage(nextImage);
                 images.push(nextImage);
+
+                // Cooldown period
+                await new Promise(resolve => setTimeout(resolve, 3000)); // 3-second cooldown
+                canPressSpace = true; // Re-enable spacebar press
             }
         });
 
