@@ -62,6 +62,25 @@
             }
         }
 
+        async function rotateImages() {
+            while (true) {
+                for (let i = 0; i < images.length; i++) {
+                    // Show static GIF
+                    showImage(staticGif);
+                    await new Promise(resolve => setTimeout(resolve, 1000)); // Show static for 1 second
+
+                    // Show the next image
+                    showImage(images[i]);
+                    const randomInterval = Math.random() * 3000 + 3000; // Random interval between 3-6 seconds
+                    await new Promise(resolve => setTimeout(resolve, randomInterval));
+
+                    // Move the image to the back of the array
+                    const shiftedImage = images.shift();
+                    images.push(shiftedImage);
+                }
+            }
+        }
+
         // Start the rotation
         rotateImages();
     </script>
